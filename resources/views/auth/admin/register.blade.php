@@ -5,40 +5,29 @@
 @section('content')
 <div class="login-box-body">
     <p class="login-box-msg">Register to Join</p>
-
-    <form method="POST" action="{{ route('login') }}">
+    @if($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="text-danger mb-5">{{ $error }}</div>
+        @endforeach
+    @endif
+    <form method="POST" action="{{ route('register') }}">
         @csrf
         <div class="form-group has-feedback">
             <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email"
                 value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            @if(Session::has('email'))
-            <span style="display: block;" class="invalid-feedback" role="alert">
-                <strong class="text-danger">{{ Session::get('ErrorMessage') }}</strong>
-            </span>
-            @endif
         </div>
         <div class="form-group has-feedback">
             <input type="password" id="password" class="form-control @error('password') is-invalid @enderror"
                 name="password" required placeholder="Password">
             <span style="pointer-events: all;" id="eye" onclick="toggle()"
                 class="glyphicon show glyphicon-eye-open form-control-feedback"></span>
-            @if(Session::has('password'))
-            <span style="display: block;" class="invalid-feedback" role="alert">
-                <strong class="text-danger">{{ Session::get('ErrorMessage') }}</strong>
-            </span>
-            @endif
         </div>
         <div class="form-group has-feedback">
             <input type="password" id="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror"
                 name="password_confirmation" required placeholder="Re-type password">
             <span style="pointer-events: all;" id="eye"
                 class=""></span>
-            @if(Session::has('password_confirmation'))
-            <span style="display: block;" class="invalid-feedback" role="alert">
-                <strong class="text-danger">{{ Session::get('ErrorMessage') }}</strong>
-            </span>
-            @endif
         </div>
         <div class="row">
             <div class="col-xs-8">

@@ -4,14 +4,15 @@ namespace App\Http\Controllers\Admin\SequrityQuestions;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\SequrityQuestion;
 
 class SequrityQuestionController extends Controller
 {
     public function index()
     {
-        $questionData = Supplier::orderBy('company_name', 'asc')->get();
-        $rowCount = Supplier::count();
-        return view('admin.supplier.index', compact('SupplierData', 'rowCount'));
+        $questionData = SequrityQuestion::orderBy('company_name', 'asc')->get();
+        $rowCount = SequrityQuestion::count();
+        return view('admin.sequrityQuestion.index', compact('questionData', 'rowCount'));
     }
 
     /**
@@ -22,7 +23,7 @@ class SequrityQuestionController extends Controller
     public function create()
     {
         $SupplierById = null;
-        return view('admin.supplier.create',compact('SupplierById'));
+        return view('admin.sequrityQuestion.create',compact('SupplierById'));
     }
 
     /**
@@ -41,7 +42,7 @@ class SequrityQuestionController extends Controller
             return redirect()->back()
                 ->withErrors($validator);
         }
-        $StoreSupplier = new Supplier();
+        $StoreSupplier = new SequrityQuestion();
         $StoreSupplier->userId = auth()->user()->id;
         $StoreSupplier->company_name = $request->company_name;
         $StoreSupplier->email = $request->email;
@@ -50,10 +51,10 @@ class SequrityQuestionController extends Controller
         $StoreSupplier->save();
 
         $notification = array(
-            'message' => 'Supplier data has been created successfully.',
+            'message' => 'SequrityQuestion data has been created successfully.',
             'alert-type' => 'success'
         );
-        return redirect('admin/supplier')->with($notification);
+        return redirect('admin/sequrityQuestion')->with($notification);
     }
 
     /**
@@ -75,8 +76,8 @@ class SequrityQuestionController extends Controller
      */
     public function edit($id)
     {
-        $SupplierById = Supplier::findOrFail($id);
-        return view('admin.supplier.create', compact('SupplierById'));
+        $SupplierById = SequrityQuestion::findOrFail($id);
+        return view('admin.sequrityQuestion.create', compact('SupplierById'));
     }
 
     /**
@@ -97,17 +98,17 @@ class SequrityQuestionController extends Controller
             return redirect()->back()
                 ->withErrors($validator);
         }
-        $UpdateSupplier = Supplier::find($id);
+        $UpdateSupplier = SequrityQuestion::find($id);
         $UpdateSupplier->company_name = $request->company_name;
         $UpdateSupplier->email = $request->email;
         $UpdateSupplier->phone = $request->phone;
         $UpdateSupplier->address = $request->address;
         $UpdateSupplier->save();
         $notification = array(
-            'message' => 'Supplier data has been updated successfully.',
+            'message' => 'SequrityQuestion data has been updated successfully.',
             'alert-type' => 'success'
         );
-        return redirect('admin/supplier')->with($notification);
+        return redirect('admin/sequrityQuestion')->with($notification);
     }
 
     /**
@@ -118,13 +119,13 @@ class SequrityQuestionController extends Controller
      */
     public function destroy($id)
     {
-        $DeleteSubCategory = Supplier::findOrFail($id);
+        $DeleteSubCategory = SequrityQuestion::findOrFail($id);
         $DeleteSubCategory->delete();
 
         $notification = array(
-            'message' => 'Supplier data has been deleted successfully.',
+            'message' => 'SequrityQuestion data has been deleted successfully.',
             'alert-type' => 'warning'
         );
-        return redirect('admin/supplier')->with($notification);
+        return redirect('admin/sequrityQuestion')->with($notification);
     }
 }

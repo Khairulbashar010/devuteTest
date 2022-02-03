@@ -44,7 +44,7 @@
                                         <p style="color:#455056; font-size:15px;line-height:24px; margin:0;">
                                             You need to verify your email to continue to our site. Click the button below to continue.
                                         </p>
-                                        <a href="{{'http://www.127.0.0.1:80001/verify-email/'. $code}}" target="_blank"
+                                        <a href="{{url('/verify-email', $code)}}" target="_blank"
                                             style="background:#16982D;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">CLICK HERE</a><br><br><br>
                                     </td>
                                 </tr>
@@ -58,7 +58,7 @@
                     </tr>
                     <tr>
                         <td style="text-align:center;">
-                            <p style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;">&copy; <strong>www.timecardtint.com</strong></p>
+                            <p style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;">&copy; <strong>www.devute.com</strong></p>
                         </td>
                     </tr>
                     <tr>

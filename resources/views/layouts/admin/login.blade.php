@@ -41,7 +41,11 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ url('/') }}">Login </a>
+    @if (Request::is('/'))
+      <a href="{{ url('/') }}">Login</a>
+    @elseif(Request::is('signup'))
+      <a href="{{ url('/') }}">Register</a>
+    @endif
   </div>
   <!-- /.login-logo -->
 @yield('content')

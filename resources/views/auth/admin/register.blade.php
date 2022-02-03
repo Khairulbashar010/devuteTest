@@ -20,10 +20,21 @@
         </div>
         <div class="form-group has-feedback">
             <input type="password" id="password" class="form-control @error('password') is-invalid @enderror"
-                name="password" required autocomplete="current-password" placeholder="Password">
+                name="password" required placeholder="Password">
             <span style="pointer-events: all;" id="eye" onclick="toggle()"
                 class="glyphicon show glyphicon-eye-open form-control-feedback"></span>
             @if(Session::has('password'))
+            <span style="display: block;" class="invalid-feedback" role="alert">
+                <strong class="text-danger">{{ Session::get('ErrorMessage') }}</strong>
+            </span>
+            @endif
+        </div>
+        <div class="form-group has-feedback">
+            <input type="password" id="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror"
+                name="password_confirmation" required placeholder="Re-type password">
+            <span style="pointer-events: all;" id="eye"
+                class=""></span>
+            @if(Session::has('password_confirmation'))
             <span style="display: block;" class="invalid-feedback" role="alert">
                 <strong class="text-danger">{{ Session::get('ErrorMessage') }}</strong>
             </span>
@@ -33,7 +44,7 @@
             <div class="col-xs-8">
                 <div class="checkbox icheck">
                     <label>
-                        <a href="#"> Forgot Password?</a>
+                        <a href="{{route('signin')}}"> Already Registered?</a>
                     </label>
                 </div>
             </div>

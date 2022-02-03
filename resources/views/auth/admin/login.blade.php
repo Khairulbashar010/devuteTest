@@ -31,15 +31,28 @@
         </div>
         <div class="row">
             <div class="col-xs-8">
-                <div class="checkbox icheck">
-                    <label>
-                        <a href="#"> Forgot Password?</a>
-                    </label>
-                </div>
             </div>
             <!-- /.col -->
             <div class="col-xs-4">
                 <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            </div>
+            <!-- /.col -->
+        </div>
+        <div class="row">
+            <div class="col-xs-7">
+                <div class="checkbox icheck">
+                    <label>
+                        <a href="{{ route('signup') }}">Join Us</a>
+                    </label>
+                </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-5">
+                <div class="checkbox icheck">
+                    <label>
+                        <a href="#">Forgot Password?</a>
+                    </label>
+                </div>
             </div>
             <!-- /.col -->
         </div>

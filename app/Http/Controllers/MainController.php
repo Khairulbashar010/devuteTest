@@ -9,4 +9,7 @@ class MainController extends Controller
     public function login_form(){
         return view('auth.admin.login');
     }
+    public function registration_form(){
+        return view('auth.admin.register');
+    }
 }

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,11 +14,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('', [MainController::class, 'login_form'])->name('signin');
+
+Route::group(['as' => 'admin.', 'prefix'=>'admin', 'middleware'=>['admin','auth'], 'namespace'=>'App\Http\Controllers\Admin'], function (){
+    Route::get('dashboard', 'AdminController@index')->name('dashboard');
+
+    Route::group(['namespace'=>'SequrityQuestions'], function() {
+        Route::resource('sequrity-questions','SequrityQuestionController');
+    });
+});
+
+Route::group(['as' => 'user.', 'prefix'=>'user', 'middleware'=>['user','auth'], 'namespace'=>'App\Http\Controllers\User'], function (){
+    Route::get('dashboard', 'UserController@index')->name('dashboard');
+});

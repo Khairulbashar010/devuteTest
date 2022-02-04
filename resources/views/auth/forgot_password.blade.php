@@ -1,8 +1,8 @@
 @extends('layouts.admin.login')
 
-@section('title','Code Expired')
+@section('title','Forgot Password')
 @section('content')
-<h3 class="text-center">The link is expired.<br>Resend a code from below.<br></h3>
+<h3 class="text-center" style="margin-top:40vh;">Enter your email<br></h3>
 
 <div class="login-box-body">
     @if($errors->any())
@@ -10,7 +10,7 @@
             <div class="text-danger" style="margin-bottom:5%">{{ $error }}</div>
         @endforeach
     @endif
-    <form method="POST" action="{{ route('resendVerificationEmail') }}">
+    <form method="POST" action="{{ route('checkEmail') }}">
         @csrf
         <div class="form-group has-feedback">
             <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email"

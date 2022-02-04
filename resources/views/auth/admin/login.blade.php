@@ -8,6 +8,11 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
+            @if(Session::has('password-change'))
+                <span style="display: block;" class="invalid-feedback" role="alert">
+                    <strong class="text-success">{{ Session::get('ErrorMessage') }}</strong>
+                </span>
+            @endif
         <div class="form-group has-feedback">
             <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email"
                 value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
@@ -50,7 +55,7 @@
             <div class="col-xs-5">
                 <div class="checkbox icheck">
                     <label>
-                        <a href="#">Forgot Password?</a>
+                        <a href="{{ route('forgotPassword') }}">Forgot Password?</a>
                     </label>
                 </div>
             </div>

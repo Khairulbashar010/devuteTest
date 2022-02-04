@@ -87,8 +87,7 @@
   <script src="{{ asset('assets/backend/js/adminlte.min.js') }}"></script>
   <!-- <script src="{{ asset('assets/backend/js/toastr.min.js') }}"></script> -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-  <!-- Custom File Input -->
-  <script src="{{ asset('assets\backend\plugins\bs-custom-file-input\bs-custom-file-input.min.js') }}"></script>
+
 
   <script>
     $(document).ready(function() {
@@ -160,17 +159,6 @@
     }
   </script>
   <!-- Bootstrap Snippet: Change button text & icon on click -->
-  <script>
-    jQuery(function($) {
-      $('#swapFire').on('click', function() {
-        var $el = $(this),
-          textNode = this.lastChild;
-        $el.find('span').toggleClass('fa-minus');
-        textNode.nodeValue = ' Form ' + ($el.hasClass('showFire') ? 'Close' : 'Open')
-        $el.toggleClass('showFire');
-      });
-    });
-  </script>
 </body>
 
 </html>

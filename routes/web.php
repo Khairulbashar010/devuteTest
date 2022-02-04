@@ -19,7 +19,16 @@ Auth::routes();
 Route::get('', [MainController::class, 'login_form'])->name('signin');
 Route::get('signup', [MainController::class, 'registration_form'])->name('signup');
 Route::get('verify-email/{code}', [MainController::class, 'verifyEmail'])->name('verifyEmail');
-Route::post('resend/verification', [MainController::class, 'verificationEmail'])->name('resend.verification.email');
+Route::post('resend/verification', [MainController::class, 'verificationEmail'])->name('resendVerificationEmail');
+
+Route::group(['prefix'=>'forgot-password', 'middleware'=>['guest'], 'namespace'=>'App\Http\Controllers'], function (){
+    Route::get('', 'MainController@forgotPassword')->name('forgotPassword');
+    Route::post('provide-email', 'MainController@checkEmail')->name('checkEmail');
+    Route::get('security-questions/{id}', 'MainController@submitAnswer')->name('submitAnswer');
+    Route::post('check-answer', 'MainController@checkAnswer')->name('checkAnswer');
+    Route::get('update-password/{id}', 'MainController@viewChangePassword')->name('viewChangePassword');
+    Route::post('update-password', 'MainController@updatePassword')->name('updatePassword');
+});
 
 
 Route::group(['as' => 'admin.', 'prefix'=>'admin', 'middleware'=>['admin','auth'], 'namespace'=>'App\Http\Controllers\Admin'], function (){

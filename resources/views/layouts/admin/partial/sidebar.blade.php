@@ -14,13 +14,20 @@
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
+            @if (Auth::user()->role_id == 2)
+            <li class="{{ Request::is('user/dashboard') ? 'active' : '' }}">
+                <a href="{{ route('user.dashboard') }}">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+            </li>
+            @endif
+            @if (Auth::user()->role_id == 1)
             <li class="{{ Request::is('admin/dashboard') ? 'active' : '' }}">
                 <a href="{{ route('admin.dashboard') }}">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            @if (Auth::user()->role_id == 1)
-            <li class="">
+            <li class="{{ Request::is('admin/answers') ? 'active' : '' }}">
                 <a href="{{route('admin.answers')}}">
                     <i class="fa fa-question"></i> <span>Security Questions</span>
                 </a>

@@ -16,7 +16,9 @@ class CreateSequrityQuestionAnswersTable extends Migration
         Schema::create('sequrity_question_answers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('answer');
+            $table->string('mother_maiden_name');
+            $table->string('first_pet');
+            $table->string('favourite_teacher');
             $table->timestamps();
         });
     }

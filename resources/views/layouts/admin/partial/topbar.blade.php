@@ -23,28 +23,28 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                @if(Auth::user()->role_id == 1)
-                                    <img src="{{asset('assets/img/users/admin/'.Auth::user()->photo)}}" class="user-image" alt="User Image">
-                                @endif()
-                                    <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                                    <img src="{{asset('assets/img/users/admin/'.Auth::user()->photo)}}" class="user-image" alt="{{ Auth::user()->name }}">
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                    @if(Auth::user()->role_id == 1)
                                         <img src="{{asset('assets/img/users/admin/'.Auth::user()->photo)}}" class="img-circle"
                                             alt="{{ Auth::user()->name }}">
-                                    @endif()
 
                                         <p>
-                                            Admin
+                                            {{ Auth::user()->name }}
                                             <small>{{ Auth::user()->email }}</small>
                                         </p>
                                     </li>
                                     <!-- Menu Body -->
                                     <!-- Menu Footer-->
-                                    <li class="user-footer text-center">
-                                        <div class="">
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                        <a class="btn btn-default btn-flat" href="{{ route('common.profile') }}">
+                                               Profile
+                                            </a>
+                                        </div>
+                                        <div class="pull-right">
                                             <a class="btn btn-default btn-flat" href="{{ route('logout') }}" onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}

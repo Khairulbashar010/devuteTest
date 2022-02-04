@@ -30,7 +30,7 @@ class MainController extends Controller
                 'alert-type' => 'success',
                 'message' => 'Email already verified'
             ];
-            return redirect('user/dashboard')->with($notification);
+            return redirect('common/profile')->with($notification);
         }
         $verifyEmail = User::where('id',$codeData->user->id)->update([
             'email_verified' => 1,
@@ -42,7 +42,7 @@ class MainController extends Controller
             'alert-type' => 'success',
             'message' => 'Email verified successfully'
         ];
-        return redirect('user/dashboard')->with($notification);
+        return redirect('common/profile')->with($notification);
     }
 
     public function verificationEmail(Request $request){

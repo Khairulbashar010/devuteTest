@@ -4,10 +4,8 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-            @if(Auth::user()->role_id == 1)
                 <img src="{{asset('assets/img/users/admin/'.Auth::user()->photo)}}" class="img-circle"
                     alt="User Image">
-            @endif()
             </div>
             <div class="pull-left info">
                 <p>{{Auth::user()->name}} </p>
@@ -21,10 +19,10 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            @if (Auth::user()->role_id ==1)
+            @if (Auth::user()->role_id == 1)
             <li class="">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Security Questions</span>
+                    <i class="fa fa-question"></i> <span>Security Questions</span>
                 </a>
             </li>
             @endif

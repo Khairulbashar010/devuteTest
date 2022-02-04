@@ -33,3 +33,8 @@ Route::group(['as' => 'admin.', 'prefix'=>'admin', 'middleware'=>['admin','auth'
 Route::group(['as' => 'user.', 'prefix'=>'user', 'middleware'=>['user','auth'], 'namespace'=>'App\Http\Controllers\User'], function (){
     Route::get('dashboard', 'UserController@index')->name('dashboard');
 });
+
+Route::group(['as' => 'common.', 'prefix'=>'common', 'middleware'=>['role_check:1,2'], 'namespace'=>'App\Http\Controllers\Common'], function (){
+    Route::get('profile','ProfileController@index')->name('profile');
+    Route::post('update-profile','ProfileController@updateProfile')->name('updateProfile');
+});

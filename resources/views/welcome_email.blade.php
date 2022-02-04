@@ -44,7 +44,7 @@
                                         <p style="color:#455056; font-size:15px;line-height:24px; margin:0;">
                                             You need to verify your email to continue to our site. Click the button below to continue.
                                         </p>
-                                        <a href="{{url('/verify-email', $code)}}" target="_blank"
+                                        <a href="{{'http://localhost:8000/verify-email/'. $code}}" target="_blank"
                                             style="background:#16982D;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">CLICK HERE</a><br><br><br>
                                     </td>
                                 </tr>

@@ -33,7 +33,7 @@
                                     <li class="user-header">
                                     @if(Auth::user()->role_id == 1)
                                         <img src="{{asset('assets/img/users/admin/'.Auth::user()->photo)}}" class="img-circle"
-                                            alt="User Image">
+                                            alt="{{ Auth::user()->name }}">
                                     @endif()
 
                                         <p>

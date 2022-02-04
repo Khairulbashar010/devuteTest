@@ -3,13 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
-use App\Mail\WelcomeMail;
-use App\Models\VerifyEmail;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -71,12 +67,7 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        $code = Str::random(40);
-        VerifyEmail::create([
-            'user_id' => $user->id,
-            'code' => $code,
-        ]);
-        Mail::to($user->email)->send(new WelcomeMail($user, $code));
+        sendCode($user);
         return view('auth.admin.verify-email');
     }
 }

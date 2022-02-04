@@ -19,6 +19,7 @@ Auth::routes();
 Route::get('', [MainController::class, 'login_form'])->name('signin');
 Route::get('signup', [MainController::class, 'registration_form'])->name('signup');
 Route::get('verify-email/{code}', [MainController::class, 'verifyEmail'])->name('verifyEmail');
+Route::post('resend/verification', [MainController::class, 'verificationEmail'])->name('resend.verification.email');
 
 
 Route::group(['as' => 'admin.', 'prefix'=>'admin', 'middleware'=>['admin','auth'], 'namespace'=>'App\Http\Controllers\Admin'], function (){

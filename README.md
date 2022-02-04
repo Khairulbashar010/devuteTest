@@ -14,9 +14,14 @@ These commands should be kept running.
     php artisan serve
     php artisan queue:listen
 
+Finaly run
+    php artisan optimize
+
 Two users will be seeded in the database.
     1. admin@gmail.com
-    2. baahar@gmail.com
+    2. user@gmail.com
 Password for both is 123456788.
+Only a new user can be registered through the registration system.
+A new admin cannot be registered.
 
 There might be an error if the app doesn't run on port 8000

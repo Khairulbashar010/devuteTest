@@ -21,7 +21,7 @@
             </li>
             @if (Auth::user()->role_id == 1)
             <li class="">
-                <a href="#">
+                <a href="{{route('admin.answers')}}">
                     <i class="fa fa-question"></i> <span>Security Questions</span>
                 </a>
             </li>

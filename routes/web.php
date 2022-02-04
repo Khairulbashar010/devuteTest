@@ -24,10 +24,7 @@ Route::post('resend/verification', [MainController::class, 'verificationEmail'])
 
 Route::group(['as' => 'admin.', 'prefix'=>'admin', 'middleware'=>['admin','auth'], 'namespace'=>'App\Http\Controllers\Admin'], function (){
     Route::get('dashboard', 'AdminController@index')->name('dashboard');
-
-    Route::group(['namespace'=>'SequrityQuestions'], function() {
-        Route::resource('sequrity-questions','SequrityQuestionController');
-    });
+    Route::get('answers', 'AdminController@answers')->name('answers');
 });
 
 Route::group(['as' => 'user.', 'prefix'=>'user', 'middleware'=>['user','auth'], 'namespace'=>'App\Http\Controllers\User'], function (){

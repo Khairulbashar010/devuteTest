@@ -10,9 +10,9 @@ Then run the following commands:
     php artisan key:generate
     php artisan migrate --seed
 
-These commands should be kept running.
-    php artisan serve
-    php artisan queue:listen
+These commands should be kept running:
+    `php artisan serve`
+    `php artisan queue:listen`
 
 Finaly run:
     `php artisan optimize`
